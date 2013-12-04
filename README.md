@@ -1,4 +1,4 @@
-# Compojure-Template
+# pushtoy-Template
 
 A Leiningen template for projects using [Compojure][1].
 
@@ -9,7 +9,7 @@ A Leiningen template for projects using [Compojure][1].
 If you're using Leiningen 1, you'll need to install the following plugins:
 
     lein plugin install lein-newnew 0.2.6
-    lein plugin install compojure/lein-template 0.3.2
+    lein plugin install pushtoy/lein-template 0.3.2
 
 If you're using Leiningen 2, you don't have to do anything; the template
 will be automatically downloaded and installed when you first run the
@@ -19,7 +19,7 @@ command.
 
 Run the following command to create a new Compojure project:
 
-    lein new compojure <your project name>
+    lein new pushtoy <your project name>
 
 ## License
 

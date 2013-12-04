@@ -7,6 +7,12 @@
     "project_lein2.clj"
     "project_lein1.clj"))
 
+
+(defn binary [file]
+  (io/input-stream (io/resource (str/join "/" ["leiningen" "new" "compojure" file]))))
+
+
+
 (defn compojure
   "Create a new Compojure project"
   [name]
@@ -20,4 +26,10 @@
              ["README.md"   (render "README.md")]
              ["src/{{sanitized}}/handler.clj"       (render "handler.clj")]
              ["test/{{sanitized}}/test/handler.clj" (render "handler_test.clj")]
-             "resources/public")))
+
+             ["resources/public/css/bootstrap.min.css" (binary "resources/public/css/bootstrap.min.css")]
+             ["resources/public/js/bootstrap.min.js" (binary "resources/public/js/bootstrap.min.js")]
+             ["resources/public/index.html" (binary "resources/public/index.html")])
+    ))
+
+
