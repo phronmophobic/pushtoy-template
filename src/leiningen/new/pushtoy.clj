@@ -1,6 +1,9 @@
-(ns leiningen.new.compojure
+(ns leiningen.new.pushtoy
   (:use [leiningen.new.templates :only [renderer sanitize year ->files]]
-        [leinjacker.utils :only [lein-generation]]))
+        
+        [leinjacker.utils :only [lein-generation]])
+  (:require [clojure.java.io :as io]
+            [clojure.string :as str]))
 
 (def project-file
   (if (= (lein-generation) 2)
@@ -9,17 +12,18 @@
 
 
 (defn binary [file]
-  (io/input-stream (io/resource (str/join "/" ["leiningen" "new" "compojure" file]))))
+  (io/input-stream (io/resource (str/join "/" ["leiningen" "new" "pushtoy" file]))))
 
 
 
-(defn compojure
+(defn pushtoy
   "Create a new Compojure project"
   [name]
   (let [data {:name name
               :sanitized (sanitize name)
               :year (year)}
-        render #((renderer "compojure") % data)]
+        render #((renderer "pushtoy") % data)]
+    
     (->files data
              [".gitignore"  (render "gitignore")]
              ["project.clj" (render project-file)]
